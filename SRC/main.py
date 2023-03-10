@@ -8,8 +8,16 @@ from Modules import SkyMap
 from database import database as connection
 from database import Map
 
+import logging
 
-app = FastAPI(title="AstroMap API", version="0.0.1", description="Astromap API generated to create astromap images")
+
+logging.basicConfig(filename='Data/Logs/API.log',
+                    level=logging.INFO,
+                    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+                    )
+
+
+app = FastAPI(title="AstroMap API", version="0.0.1", description="Astromap API generated to create astromap images", docs_url=None, redoc_url=None)
 skymap = SkyMap.StarCharts()
 
 
@@ -41,6 +49,7 @@ async def generate_map(background_tasks: BackgroundTasks, request: Request):
             "time_estimated": "5 minutes"
         }
     except Exception as e:
+        logging.error(e)
         return {
             "created": False,
             "error": "An error has occurred",
