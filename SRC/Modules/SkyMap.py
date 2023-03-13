@@ -53,15 +53,6 @@ class StarCharts:
             draw.text((background.width // 2 - draw.textsize(str(location), font=font)[0] // 2, background.height - 285), str(location), fill="white", font=font)
             draw.text((background.width // 2 - draw.textsize(str(when), font=font)[0] // 2, background.height - 245), str(when), fill="white", font=font)
 
-            # np_img = np.array(new_image)
-            # img_b64 = base64.b64encode(np_img).decode('utf-8')
-
-            # new_image.save(img_bytes, format='PNG')
-            # img_bytes.seek(0)
-            # img_bytes = img_bytes.read()
-
-            # img_b64 = base64.b64encode(img_bytes).decode('utf-8')
-
             new_image.save(path_sky_map, format='PNG')
 
             return True
